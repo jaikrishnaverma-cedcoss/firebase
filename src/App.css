@@ -1,0 +1,44 @@
+:root{
+  --col:#00a8b8;
+  --fcol:rgb(255, 255, 255);
+}
+.mycontain{
+  max-width: 600px;
+  width: 600px;
+}
+
+.form-check-input:checked {
+  background-color: #07ad3f;
+  border-color: #175f21;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bg-warning,.btn-warning{
+  background-color: var(--col) !important;
+  border-color:var(--col);
+  box-shadow: var(--col);
+  color: var(--fcol);
+}
