@@ -20,9 +20,9 @@
   100% {background-color:  rgb(17, 85, 26);}
 }
 
-.bg-warning,.btn-warning{
+/* .bg-warning,.btn-warning{
   background-color: var(--col) !important;
   border-color:var(--col);
   box-shadow: var(--col);
   color: var(--fcol);
-}
+} */

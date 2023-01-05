@@ -59,7 +59,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        
+
         const todoRef = ref(db, "/todos");
         onValue(todoRef, (snapshot) => {
             const todos = snapshot.val();
@@ -79,7 +79,7 @@ const Home = () => {
     console.log("state", state)
     return (<>
         <div className="col-12 d-flex flex-column align-items-center">
-            <p className="fs-4 bold my-2">TodoInput</p>
+            <p className="fs-4 bold my-2">Todo<a href="">Input</a></p>
             <div className="col-12 border rounded p-3">
                 <div className="input-group mb-3">
                     <span className="input-group-text bg-warning" id="basic-addon1"><i className="bi bi-journal-bookmark-fill"></i></span>
