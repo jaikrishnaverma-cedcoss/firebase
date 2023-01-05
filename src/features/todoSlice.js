@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { app } from "../firbaseconfig";
-import {  ref, push, getDatabase, onValue } from "firebase/database";
-import { useDispatch } from "react-redux";
+import { ref, push, getDatabase, onValue, remove, set } from "firebase/database";
+// import { useDispatch } from "react-redux";
 
 const db = getDatabase(app);
 const todoRef = ref(db, "/todos");
@@ -14,41 +14,31 @@ export const todoSlice = createSlice({
     name: "todoSlice",
     initialState,
     reducers: {
-        setData(state,action){
-            state.todo=action.payload
+        setData: (state, action) => {
+            state.todo = action.payload
         },
-        addTodo(state,action){
-            push(todoRef, {...action.payload});
+        addTodo: (state, action) => {
+            push(todoRef, { ...action.payload });
+        },
+        deleteTodo: (state, action) => {
+            remove(ref(db, `/todos/${action.payload}`))
         }
     },
     extraReducers:builder=>{
-    builder.addCase(fetchData.pending,(state,action)=>{
-   state.message=action.payload
-    })
-    builder.addCase(fetchData.rejected,(state,action)=>{
-        state.message=action.payload
-    })
-    builder.addCase(fetchData.fulfilled,(state,action)=>{
-        state.todo=action.payload
-    })
+builder.addCase(hit.pending,(state,action)=>{
+
+})
+builder.addCase(hit.rejected,(state,action)=>{
+
+})
+builder.addCase(hit.fulfilled,(state,action)=>{
+
+})
     }
- 
-})
-export const {addTodo,setData} = todoSlice.actions
 
-export const fetchData=createAsyncThunk('todoSlice/fetchData',async type=>{
-    const todoRef = ref(db, "/todos");
-    const dispatch=useDispatch()
-      onValue(todoRef, (snapshot) => {
-          const todos = snapshot.val();
-          const newTodoList = [];
-    
-          for (let id in todos) {
-            newTodoList.push({ id, ...todos[id] });
-          };
-     dispatch(setData(newTodoList))
-         
-        });
-
-       
 })
+export const hit=createAsyncThunk('todoSlice/hit',val=>{
+console.log(val)
+})
+export const { addTodo, setData, deleteTodo, updateTodo } = todoSlice.actions
+
